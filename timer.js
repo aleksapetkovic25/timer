@@ -112,12 +112,11 @@ function start(){
     if(timerInterval){
         clearInterval(timerInterval)
     }
-
+    
     if(seconds <= 0 && minutes <= 0 && hours <= 0){
         $('#set-time').modal('show');
         return;
     }
-
 
     startBtn.disabled = true;
     stopBtn.disabled = false;
@@ -140,6 +139,9 @@ function start(){
     secondContainer.innerHTML = (seconds < 10 ? '0' + seconds : seconds);
 
     timer();
+
+    container.removeAttribute('data-toggle');
+    container.removeAttribute('data-target');
 }
 
 function stop(){
@@ -157,6 +159,9 @@ function stop(){
 
 function reset(){
     clearInterval(timerInterval);
+
+    container.setAttribute('data-toggle', 'modal');
+    container.setAttribute('data-target', '#set-time');
 
     hours = 0;
     minutes = 0;
